@@ -21,7 +21,7 @@ func _process(delta):
 	   
 func _decay_trauma(delta):
 	var change = decay_rate * delta
-	_trauma = max(_trauma - change, 0)
+	_trauma = max(_trauma - change, 1)
  
 func _apply_shake():
 	var shake = _trauma * _trauma

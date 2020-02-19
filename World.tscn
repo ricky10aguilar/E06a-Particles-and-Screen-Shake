@@ -1,20 +1,123 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scripts/Camera.gd" type="Script" id=1]
 [ext_resource path="res://Scripts/World.gd" type="Script" id=2]
+[ext_resource path="res://Assets/kenney.nl/smoke_07.png" type="Texture" id=3]
+[ext_resource path="res://Assets/kenney.nl/twirl_01.png" type="Texture" id=4]
+[ext_resource path="res://Assets/kenney.nl/star_07.png" type="Texture" id=5]
+
+[sub_resource type="Curve" id=1]
+_data = [ Vector2( 0.0316456, 0.205227 ), 0.0, 0.300869, 0, 0, Vector2( 1, 1 ), 0.589278, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=2]
+curve = SubResource( 1 )
+
+[sub_resource type="ParticlesMaterial" id=3]
+lifetime_randomness = 0.1
+emission_shape = 2
+emission_box_extents = Vector3( 2, 2, 1 )
+flag_disable_z = true
+spread = 13.97
+gravity = Vector3( 10, 30, 0 )
+initial_velocity = 34.48
+angular_velocity = 202.07
+angular_velocity_random = 0.87
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 66.66
+linear_accel_random = 0.69
+tangential_accel_random = 0.17
+damping = 42.53
+damping_random = 0.46
+angle = 82.8
+scale_curve = SubResource( 2 )
+
+[sub_resource type="Gradient" id=4]
+offsets = PoolRealArray( 0.0814815, 0.948148 )
+colors = PoolColorArray( 0.976865, 0.984375, 0.0230713, 1, 0.981972, 0.984375, 0.676758, 1 )
+
+[sub_resource type="GradientTexture" id=5]
+gradient = SubResource( 4 )
+
+[sub_resource type="Curve" id=6]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 1, 0.605168 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=7]
+width = 2043
+curve = SubResource( 6 )
+
+[sub_resource type="ParticlesMaterial" id=8]
+emission_shape = 2
+emission_box_extents = Vector3( 5, 5, 5 )
+flag_disable_z = true
+spread = 63.62
+gravity = Vector3( 9, -3, 0 )
+initial_velocity = 678.17
+initial_velocity_random = 0.33
+angular_velocity = 281.38
+angular_velocity_random = 0.3
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+angle = -364.1
+angle_random = 0.72
+scale_curve = SubResource( 7 )
+color_ramp = SubResource( 5 )
+
+[sub_resource type="Gradient" id=9]
+offsets = PoolRealArray( 0.362963, 1 )
+colors = PoolColorArray( 0.699097, 0.972656, 0.966245, 1, 0.0567627, 0.776378, 0.96875, 1 )
+
+[sub_resource type="GradientTexture" id=10]
+gradient = SubResource( 9 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 241.38
+angular_velocity = 281.38
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+radial_accel = 45.97
+angle = 182.1
+angle_random = 1.0
+color_ramp = SubResource( 10 )
 
 [node name="World" type="Node2D"]
 script = ExtResource( 2 )
 
-[node name="Particles1" type="Particles2D" parent="."]
-position = Vector2( 128, 256 )
+[node name="Particles2D" type="Particles2D" parent="."]
+position = Vector2( 200.771, 600 )
+rotation = -2.29685
+amount = 20
+lifetime = 5.0
+preprocess = 188.1
+randomness = 0.41
+visibility_rect = Rect2( -100, 10, 200, 200 )
+process_material = SubResource( 3 )
+texture = ExtResource( 3 )
 
 [node name="Particles2" type="Particles2D" parent="."]
-position = Vector2( 512, 256 )
+position = Vector2( 514.672, 389.609 )
+rotation = 1.48702
+scale = Vector2( 0.25, 0.25 )
+amount = 20
+lifetime = 2.0
+preprocess = 2.0
+explosiveness = 0.09
+process_material = SubResource( 8 )
+texture = ExtResource( 5 )
 
 [node name="Particles3" type="Particles2D" parent="."]
-position = Vector2( 896, 256 )
+position = Vector2( 749.229, 218.589 )
+scale = Vector2( 0.5, 0.5 )
+amount = 10
+speed_scale = 2.38
+process_material = SubResource( 11 )
+texture = ExtResource( 4 )
 
 [node name="Camera" type="Camera2D" parent="."]
-position = Vector2( 512, 304 )
+position = Vector2( 512, 306.073 )
+current = true
+limit_smoothed = true
 script = ExtResource( 1 )
+decay_rate = 0.1
